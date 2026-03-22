@@ -18,7 +18,7 @@ const Watch = ({ videos }) => {
     const { title, channelTitle, description } = video.snippet;
     const { viewCount, likeCount, commentCount } = video.statistics;
     return (
-        <div className='flex bg-black text-white p-4'>
+        <div className='md:flex bg-black text-white p-4'>
             <div className='w-full'>
                 <iframe
                     width="100%"
