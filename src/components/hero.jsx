@@ -4,11 +4,14 @@ import { MdMic } from "react-icons/md";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoNotificationsOutline } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
+import { useNavigate } from "react-router-dom";
 
 const Hero = ({setSearchResult}) => {
+  const navigate = useNavigate();
   const [inputSearch,setInputSearch] = useState("");
   function handleSearch(){
     setSearchResult(inputSearch);
+    navigate("/");
   }
   return (
     <div className="flex items-center justify-between  px-4 py-2 bg-black text-white">
@@ -28,6 +31,7 @@ const Hero = ({setSearchResult}) => {
            value={inputSearch} 
           className=" w-full ml-4 p-2 bg-black border border-gray-600 rounded-l-full outline-none"
           onChange={(e)=>setInputSearch(e.target.value)}
+          onKeyDown={(e)=>e.key==="Enter" && handleSearch()}
         />
 
         <button onClick={()=>handleSearch()} className="bg-[#222222] px-4 py-2 border border-gray-600 rounded-r-full">

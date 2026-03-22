@@ -1,16 +1,28 @@
-import React from "react";
+
 import { MdHome, MdSubscriptions, MdOutlineVideoLibrary } from "react-icons/md";
 import { SiYoutubeshorts } from "react-icons/si";
 import { FaHistory } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
-
-const SideBar = () => {
+import { fetchTrendingVideos} from '../youtube'
+import React, { useEffect} from 'react'
+import { useNavigate } from "react-router-dom";
+const SideBar = ({setVideos}) => {
+  const navigate = useNavigate();
+    useEffect(()=>{
+         getVideos();
+    },[]);
+        const getVideos = async () =>{
+            const data = await fetchTrendingVideos();
+            console.log(data);
+            setVideos(data);
+            navigate(`/`);
+        };
   return (
     <div className="hidden md:block w-60 h-full bg-black text-white p-4 space-y-4">
 
-      <div className="flex items-center gap-4 cursor-pointer hover:bg-[#222222] p-2 rounded-lg">
+      <div onClick={()=>getVideos()} className="flex items-center gap-4 cursor-pointer hover:bg-[#222222] p-2 rounded-lg">
         <MdHome className="text-xl" />
-        <span>Home</span>
+        <span >Home</span>
       </div>
 
       <div className="flex items-center gap-4 cursor-pointer hover:bg-[#222222] p-2 rounded-lg">
