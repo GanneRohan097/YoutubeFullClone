@@ -18,7 +18,7 @@ const Hero = ({setSearchResult}) => {
 
       <div className="flex items-center gap-4">
         <RxHamburgerMenu className="hidden md:block text-2xl cursor-pointer" />
-        <div className="flex items-center gap-1 cursor-pointer">
+        <div onClick={()=>navigate("/")} className="flex items-center gap-1 cursor-pointer">
           <FaYoutube className="text-red-500 text-3xl" />
           <span className="font-semibold text-xl">YouTube</span>
         </div>
